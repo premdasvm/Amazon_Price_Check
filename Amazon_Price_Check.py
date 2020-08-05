@@ -3,9 +3,28 @@ from bs4 import BeautifulSoup
 import smtplib
 import time
 
+# URL Of the product on amazon, Only amazon is supported
+
 URL = 'https://www.amazon.in/Behringer-HC-200-Professional-Headphones/dp/B07V4RL8PF/ref=pd_sbs_267_4/257-2757016-4716359?_encoding=UTF8&pd_rd_i=B07V4RL8PF&pd_rd_r=e70d074a-6043-483d-a1a9-097679b5e058&pd_rd_w=yKyOD&pd_rd_wg=86dvt&pf_rd_p=00b53f5d-d1f8-4708-89df-2987ccce05ce&pf_rd_r=N367GYJ7G88Q8X95C8F2&psc=1&refRID=N367GYJ7G88Q8X95C8F2'
 
+# Change the User-Agent to your computer's
+
 headers = {"User-Agent": 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:79.0) Gecko/20100101 Firefox/79.0'}
+
+
+# User Defined variables
+# To Authenticate Email access you may have to enable 2-Factor Authenctiv=cation on your Gmail account
+# Then Generate Google App Password for the Mail app, And Use the Password here.
+
+Email = 'thorinlotr4@gmail.com'
+password = 'tlidbbocuzlromiw'
+ToEmail = 'Premdasvm8@gmail.com'
+Checking_Interval = 60 # In Seconds
+
+# Email Subject & Body
+
+Subject = 'Hey The Price Dropped'
+Body = 'Price Dropped For The Headphone, https://www.amazon.in/Behringer-HC-200-Professional-Headphones/dp/B07V4RL8PF/ref=pd_sbs_267_4/257-2757016-4716359?_encoding=UTF8&pd_rd_i=B07V4RL8PF&pd_rd_r=e70d074a-6043-483d-a1a9-097679b5e058&pd_rd_w=yKyOD&pd_rd_wg=86dvt&pf_rd_p=00b53f5d-d1f8-4708-89df-2987ccce05ce&pf_rd_r=N367GYJ7G88Q8X95C8F2&psc=1&refRID=N367GYJ7G88Q8X95C8F2'
 
 
 def check_Price():
@@ -28,15 +47,11 @@ def send_mail():
     server.ehlo()
     server.starttls()
     server.ehlo()
-    server.login('thorinlotr4@gmail.com', 'jktanoduhkkgkamc')
+    server.login(Email, password)
 
-    Subject = 'Hey The Price Dropped'
-    body = 'Price Dropped For The Headphone, https://www.amazon.in/Behringer-HC-200-Professional-Headphones/dp/B07V4RL8PF/ref=pd_sbs_267_4/257-2757016-4716359?_encoding=UTF8&pd_rd_i=B07V4RL8PF&pd_rd_r=e70d074a-6043-483d-a1a9-097679b5e058&pd_rd_w=yKyOD&pd_rd_wg=86dvt&pf_rd_p=00b53f5d-d1f8-4708-89df-2987ccce05ce&pf_rd_r=N367GYJ7G88Q8X95C8F2&psc=1&refRID=N367GYJ7G88Q8X95C8F2'
+    msg = 'Subject: %s\n\n%s'%(Subject, Body)
 
-    # msg = f"""Subject: {Subject}\n\n{body}"""
-    msg = 'Subject: %s\n\n%s'%(Subject, body)
-
-    server.sendmail('thorinlotr4@gmail.com', 'premdasvm8@gmail.com', msg)
+    server.sendmail(Email, ToEmail, msg)
 
     print('HEY MAIL HAS BEEN SENT')
 
@@ -44,4 +59,5 @@ def send_mail():
 
 while(True):
     check_Price()
-    time.sleep(10)
+    time.sleep(Checking_Interval)
+
