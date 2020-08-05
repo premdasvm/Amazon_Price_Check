@@ -1,7 +1,5 @@
 # Amazon Product Automated Price Checking
-#
-#
-#
+
 #### Description
 Python Script for Check certain amazon Product Price and notify via email when the Price drops down from a certain value
 
