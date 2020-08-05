@@ -8,6 +8,7 @@ Python Script for Check certain amazon Product Price and notify via email when t
 #
 - Change `URL` to the Product's url from amazon.
 - Change `Price` to desired Price point
+#
 ```sh
 $ pip install requests
 $ pip install bs4
