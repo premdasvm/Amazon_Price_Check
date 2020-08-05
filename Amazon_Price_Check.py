@@ -13,7 +13,7 @@ headers = {"User-Agent": 'YOUR_USER-AGENT}
 
 
 # User Defined variables
-# To Authenticate Email access you may have to enable 2-Factor Authenctiv=cation on your Gmail account
+# To Authenticate Email access you may have to enable 2-Factor Authenctivcation on your Gmail account
 # Then Generate Google App Password for the Mail app, And Use the Password here.
 
 Email = 'YOUR_EMAIL_ADDRESS'
